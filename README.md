@@ -1,11 +1,19 @@
-# Project 1: Triple Peaks Library
+# Spots
 
-The Triple Peaks Library webpage is the first project in the Software Engineering
-program at TripleTen. It was created using HTML and CSS, based on a design brief.
+An image sharing site.
 
-## Project features
+## Description
 
-- Semantic HTML5
-- Flexbox
-- Positioning
-- Vertical stacking with z-index
+This project is called Spots. It is a responsive Figma site remake.
+
+## Tech Stack
+
+-HTML
+-CSS
+Responsive Design
+
+## Deployment
+
+This webpage is deployed to GitHub pages.
+
+-Deployment link:
