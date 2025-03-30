@@ -16,4 +16,4 @@ Responsive Design
 
 This webpage is deployed to GitHub pages.
 
--Deployment link:
+-Deployment link: https://brigomes10.github.io/se_project_spots/
