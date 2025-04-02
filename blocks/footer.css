@@ -7,3 +7,8 @@
   color: #212121;
   opacity: 70%;
 }
+
+.footer__paragraph {
+  margin: 0;
+  padding: 0;
+}
