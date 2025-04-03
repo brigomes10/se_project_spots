@@ -11,7 +11,7 @@
   justify-content: center;
   gap: 40px 20px;
   padding-bottom: 40px;
-  border-bottom: rgba(33, 33, 33, 0.4) solid;
+  border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
 }
 
 @media screen and (max-width: 627px) {
