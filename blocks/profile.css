@@ -89,7 +89,8 @@
 }
 
 .profile__add-btn:hover {
-  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  transition: visibility 0s linear 0.5s;
+  opacity: 80%;
 }
 
 .profile__edit-btn:hover {
@@ -138,16 +139,5 @@
   .profile__edit-btn {
     align-items: center;
     justify-content: center;
-
-    .profile__edit-btn:hover {
-      visibility: visible;
-      opacity: 1;
-      transition-delay: 0s;
-    }
-    .profile__add-btn:hover {
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 0s linear 0.5s, opacity 0.5s linear;
-    }
   }
 }

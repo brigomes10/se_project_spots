@@ -28,11 +28,11 @@
 
 .modal__close-btn {
   position: absolute;
-  top: 20px;
-  right: 10px;
-  bottom: 8px;
-  width: 40px;
-  height: 40px;
+  padding: 0;
+  width: 22px;
+  top: 32px;
+  right: 50px;
+  height: 22px;
   border-width: 2px;
   background: url("../images/Group\ 27.svg") center no-repeat;
   border: none;
@@ -41,15 +41,16 @@
 
 .modal__close-btn:hover {
   cursor: pointer;
+  opacity: 1;
 }
 
 .modal__title {
   margin: 0 0 32px;
+  color: #212121;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 32px;
   line-height: 1;
-  letter-spacing: 0%;
 }
 
 .modal__form {
@@ -64,12 +65,12 @@
   line-height: 1;
   letter-spacing: 0%;
   color: #212121b2;
-  opacity: 0.7;
 }
 
 .modal__input {
   display: block;
   margin: 8px 0 0;
+  color: #212121;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 20px;
@@ -79,17 +80,14 @@
   padding-left: 12px;
   padding-bottom: 16px;
   line-height: 1;
-  letter-spacing: 0%;
   border-radius: 8px;
-  gap: 10px;
   box-sizing: border-box;
   border: 1px solid #21212166;
 }
 
 .modal__input-btn:hover {
   cursor: pointer;
-  opacity: 40%;
-  border: 1px solid transparent;
+  border: 1px solid #212121;
 }
 
 .modal__input::placeholder {
@@ -108,27 +106,41 @@
   padding-left: 32px;
   cursor: pointer;
   font-size: 16px;
-  font-weight: 500px;
+  font-weight: 500;
   line-height: 1;
 }
 
 .modal__submit-btn:hover {
   cursor: pointer;
+  color: #212121;
+  opacity: 80%;
 }
 
 @media screen and (max-width: 627px) {
   .modal__title {
     font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    padding-top: 10px;
   }
 
   .modal__submit-btn {
-    border-radius: 8px;
-    gap: 8px;
-    max-width: 276px;
-    max-height: 52px;
+    max-width: unset;
+    width: 100%;
   }
 
   .modal__container {
-    max-width: 276px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 12px;
+  }
+
+  .modal__close-btn {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    opacity: 40%;
+    box-sizing: border-box;
   }
 }
