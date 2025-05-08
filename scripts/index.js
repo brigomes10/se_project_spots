@@ -51,5 +51,5 @@ function handleAddCardSubmit(evt) {
   evt.preventDefault();
   console.log(nameInput.value);
   console.log(linkInput.value);
-  editProfileModal.classList.remove("modal_is-opened");
+  newPostModal.classList.remove("modal_is-opened");
 }
