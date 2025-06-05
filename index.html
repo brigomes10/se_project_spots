@@ -47,9 +47,11 @@
               <li class="card">
                 <button class="card__delete-btn" type="button"></button>
                 <img src="#" alt="" class="card__image" />
-                <div class="card__content">
+                <div class="card__footer">
                   <h2 class="card__title"></h2>
-                  <button type="button" class="card__like-btn"></button>
+                  <button type="button" class="card__like-btn">
+                    <label for="Like card">
+                  </button>
                 </div>
               </li>
             </template>
@@ -61,7 +63,7 @@
       </footer>
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
-          <button type="button" class="modal__close-btn"></button>
+          <button type="button" class="modal__close"></button>
           <h2 class="modal__title">Edit profile</h2>
           <form class="modal__form">
             <label for="profile-name-input" class="modal__label">
@@ -87,16 +89,19 @@
         </div>
       </div>
       <div class="modal" id="new-post-modal">
-        <div class="modal__container">
-          <button type="button" class="modal__close-btn"></button>
-          <h2 class="modal__title">New post</h2>
-          <form class="modal__form">
-            <label for="card-image-input" class="modal__label">
+        <div class="modal__content">
+          <button type="button" class="modal__close">
+            <label for="Close modal">
+          </button>
+          <p class="modal__caption">New post</p>
+          <form class="modal__form" id="card-form">
+            <label for="card-link-input" class="modal__label">
               Image link
               <input
-                id="card-image-input"
+                id="card-link-input"
                 type="url"
                 class="modal__input"
+                name="description"
                 placeholder="Paste a link to the picture"
               />
             </label>
@@ -105,15 +110,30 @@
               <input
                 id="card-caption-input"
                 type="text"
+                name="caption"
                 class="modal__input"
                 placeholder="Type your caption"
               />
             </label>
-            <button type="submit" class="modal__submit-btn">Save</button>
+            <button type="submit" class="modal__button">Save</button>
           </form>
         </div>
       </div>
+    <div class="modal modal_is-opened" id="preview-modal">
+      <div class="modal__image-container">
+        <button
+          type="button"
+          class="modal__close modal__close_type_preview"
+        ></button>
+        <img
+          src="https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg"
+          alt=""
+          class="modal__image"
+        />
+        <p class="modal__caption">Golden Gate Bridge</p>
+      </div>
     </div>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>
