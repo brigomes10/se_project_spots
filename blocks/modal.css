@@ -46,6 +46,8 @@
 .modal__close_type_preview {
   top: 0;
   right: -52.5px;
+  background: url("../images/White\ X.svg") center no-repeat;
+  color: #ffffff;
 }
 
 /* .modal__close {
@@ -123,6 +125,10 @@
   display: block;
 }
 
+.modal__image-container {
+  position: relative;
+}
+
 .modal__submit-btn {
   max-width: 156px;
   max-height: 52px;
@@ -150,6 +156,11 @@
 
 .modal__caption {
   color: white;
+  background-color: black;
+  max-width: fit-content;
+  border-radius: 8px;
+  padding: 8px 4px 8px 4px;
+  font-size: 20px;
 }
 
 @media screen and (max-width: 627px) {
@@ -173,7 +184,16 @@
     box-sizing: border-box;
   }
 
+  .modal__close_type_preview {
+    top: 0;
+    right: -52.5px;
+  }
+
   .modal__input {
+    font-size: 16px;
+  }
+
+  .modal__caption {
     font-size: 16px;
   }
 }
