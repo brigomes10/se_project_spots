@@ -10,6 +10,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
+  transition: visibility 0.3s, opacity 0.3s ease-in;
 }
 
 .modal_type_preview {
@@ -18,7 +19,7 @@
 
 .modal_is-opened {
   visibility: visible;
-  opacity: 1;
+  transition: visibility 0.3s, opacity 0.3s ease-in;
 }
 
 .modal__content {
@@ -28,7 +29,7 @@
   background-color: #fff;
   border-radius: 10px;
   position: relative;
-  padding: 36px 50px 32px;
+  padding: 32px 50px 32px;
 }
 
 .modal__close {
@@ -53,19 +54,6 @@
   background: url("../images/White\ X.svg") center no-repeat;
   color: #ffffff;
 }
-
-/* .modal__close {
-  position: absolute;
-  padding: 0;
-  width: 22px;
-  top: 32px;
-  right: 50px;
-  height: 22px;
-  border-width: 2px;
-  background: url("../images/Group\ 27.svg") center no-repeat;
-  border: none;
-  opacity: 40%;
-} */
 
 .modal__close:hover {
   cursor: pointer;
@@ -154,10 +142,6 @@
   opacity: 80%;
 }
 
-.modal__container {
-  position: relative;
-}
-
 .modal__caption {
   color: white;
   background-color: black;
@@ -174,8 +158,7 @@
   }
 
   .modal__submit-btn {
-    max-width: unset;
-    width: 100%;
+    max-width: 100%;
   }
 
   .modal__container {
@@ -195,6 +178,10 @@
   .modal__caption {
     font-size: 16px;
   }
+
+  .modal__content {
+    padding: 12px;
+  }
 }
 
 @media screen and (max-width: 627px) {
@@ -205,5 +192,13 @@
 
   .modal__image {
     max-width: unset;
+  }
+
+  .modal__content {
+    width: 100%;
+  }
+
+  .modal__content {
+    padding: 12px;
   }
 }

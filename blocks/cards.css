@@ -12,6 +12,7 @@
   gap: 40px 20px;
   padding-bottom: 40px;
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 627px) {

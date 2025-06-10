@@ -27,6 +27,7 @@
 .card__delete-btn:hover {
   transition: opacity 0.3s ease-in-out;
   background-image: url(../images/Hover\ Delete\ Button.svg);
+  cursor: pointer;
 }
 
 .card__title {
@@ -64,6 +65,7 @@
   cursor: pointer;
   opacity: 40%;
   transition: opacity 0.3s ease-in-out;
+  background-repeat: no-repeat;
 }
 
 .card__like-btn:hover {
