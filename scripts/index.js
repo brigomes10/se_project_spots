@@ -59,7 +59,7 @@ const cardTemplate = document
 const cardsList = document.querySelector(".cards__list");
 
 function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
+  let cardElement = cardTemplate.cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
 
@@ -99,15 +99,12 @@ function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
 
-function handleEditProfileSubmit(evt) {
-  evt.preventDefault();
-  nameInput.value = profileNameEl.textContent;
-  editProfileDescriptionInput.value = profileDescriptionEl.textContent;
-  closeModal(editProfileModal);
-}
-
 editProfileBtn.addEventListener("click", () => {
   openModal(editProfileModal);
+});
+
+newPostBtn.addEventListener("click", () => {
+  openModal(newPostModal);
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
@@ -118,25 +115,19 @@ previewModalCloseBtn.addEventListener("click", function () {
   closeModal(previewModal);
 });
 
-editSubmitBtn.addEventListener("submit", handleEditProfileSubmit);
-
-newPostBtn.addEventListener("click", function () {
-  newPostModal.classList.add("modal_is-opened");
-});
-
 editProfileCloseBtn.addEventListener("click", function () {
   closeModal(editProfileModal);
 });
 
 newPostCloseBtn.addEventListener("click", function () {
-  newPostModal.classList.remove("modal_is-opened");
+  closeModal(newPostModal);
 });
 
 editProfileForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  profileNameEl.textContent = nameInput.value;
+  profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-  editProfileModal.classList.remove("modal_is-opened");
+  closeModal(editProfileModal);
 });
 
 addCardFormElement.addEventListener("submit", function (evt) {
@@ -152,12 +143,10 @@ addCardFormElement.addEventListener("submit", function (evt) {
 
   addCardFormElement.reset();
 
-  newPostModal.classList.remove("modal_is-opened");
+  closeModal.classList.remove("modal_is-opened");
 });
 
 initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
-
-console.log(initialCards);
