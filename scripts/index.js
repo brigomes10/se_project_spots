@@ -100,6 +100,8 @@ function closeModal(modal) {
 }
 
 editProfileBtn.addEventListener("click", () => {
+  editProfileNameInput.value = profileNameEl.textContent;
+  editProfileDescriptionInput.value = profileDescriptionEl.textContent;
   openModal(editProfileModal);
 });
 
@@ -143,7 +145,7 @@ addCardFormElement.addEventListener("submit", function (evt) {
 
   addCardFormElement.reset();
 
-  closeModal.classList.remove("modal_is-opened");
+  closeModal(newPostModal);
 });
 
 initialCards.forEach(function (item) {
