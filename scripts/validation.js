@@ -9,6 +9,8 @@ const settings = {
 
 const showInputError = (formEl, inputElement, errorMsg) => {
   inputElement.classList.add("modal__input_state_error");
+  const errorMsgEl = formEl.querySelector(`#${inputElement.id}-error`);
+  errorMsgEl.textContent = "";
 };
 
 const hideInputError = (formEl, inputElement) => {
@@ -50,7 +52,7 @@ const resetValidation = (formEl, inputList) => {
   });
 };
 
-const setEventListeners = (formEl) => {
+const setEventListeners = (formEl, config) => {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
   const buttonElement = formEl.querySelector(".modal__submit-btn");
 
@@ -68,7 +70,7 @@ const enableValidation = (config) => {
   console.log(config.formSelector);
   const formList = document.querySelectorAll(config.formSelector);
   formList.forEach((formEl) => {
-    setEventListeners(formEl);
+    setEventListeners(formEl, config);
   });
 };
 
