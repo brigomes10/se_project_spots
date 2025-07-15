@@ -150,11 +150,13 @@ editProfileForm.addEventListener("submit", function (evt) {
 
 addCardFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
-
+  resetValidation(addCardFormElement, [nameInput, linkInput], settings);
   const inputValues = {
     name: nameInput.value,
     link: linkInput.value,
   };
+
+  addCardFormElement.reset();
 
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
@@ -166,4 +168,22 @@ addCardFormElement.addEventListener("submit", function (evt) {
 initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
+});
+
+newPostModal.addEventListener("click", (evt) => {
+  if (evt.target.classList.contains("modal_is-opened")) {
+    closeModal(newPostModal);
+  }
+});
+
+editProfileModal.addEventListener("click", (evt) => {
+  if (evt.target.classList.contains("modal_is-opened")) {
+    closeModal(editProfileModal);
+  }
+});
+
+previewModal.addEventListener("click", (evt) => {
+  if (evt.target.classList.contains("modal_is-opened")) {
+    closeModal(previewModal);
+  }
 });
