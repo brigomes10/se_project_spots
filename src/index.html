@@ -6,19 +6,22 @@
     <meta name="description" content="Coffee Shop" />
     <meta name="author" content="Brian Gomes" />
     <meta name="keywords" content="project 2, schoolwork, tripleten " />
-    <link rel="stylesheet" href="pages/index.css" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
     <title>Spots</title>
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img src="./images/logo.svg" alt="Spot logo" class="header__logo" />
+        <img
+          src="<%=require('./images/logo.svg')%>"
+          alt="Spot logo"
+          class="header__logo"
+        />
       </header>
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/avatar.jpg"
+            src="<%=require('./images/avatar.jpg')%>"
             alt="Bessie Coleman"
             class="profile__avatar"
           />
@@ -27,7 +30,7 @@
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-btn">
               <img
-                src="./images/Pencil.svg"
+                src="<%=require('./images/Pencil.svg')%>"
                 class="profile__pencil-icon"
                 alt="Pencil icon"
               />Edit Profile
@@ -36,7 +39,7 @@
           <button type="button" class="profile__add-btn">
             <img
               class="profile__plus-icon"
-              src="./images/Plus.svg"
+              src="<%=require('./images/Plus.svg')%>"
               alt="Plus icon"
             />New Post
           </button>
@@ -152,9 +155,6 @@
           <p class="modal__caption"></p>
         </div>
       </div>
-
-      <script src="./scripts/validation.js"></script>
-      <script src="./scripts/index.js"></script>
     </div>
   </body>
 </html>
