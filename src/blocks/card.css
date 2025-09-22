@@ -19,14 +19,14 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background: url(../images/Delete\ Button.svg) center #0000004d;
+  background: url("../images/Delete Button.svg") center #0000004d;
   border-radius: 50%;
   border: 0px;
 }
 
 .card__delete-btn:hover {
   transition: opacity 0.3s ease-in-out;
-  background-image: url(../images/Hover\ Delete\ Button.svg);
+  background-image: url("../images/Hover Button.svg");
   cursor: pointer;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .card__like-btn {
-  background-image: url(../images/heart.svg);
+  background-image: url("../images/red heart.svg");
   background-color: transparent;
   width: 23px;
   height: 20px;
@@ -73,7 +73,7 @@
 }
 
 .card__like-btn_active {
-  background-image: url(../images/Red\ Heart.svg);
+  background-image: url("../images/Heart.svg");
   opacity: 1;
 }
 

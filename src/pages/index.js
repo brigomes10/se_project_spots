@@ -1,10 +1,12 @@
 import "./index.css";
 
+import { data } from "autoprefixer";
 import {
   enableValidation,
   settings,
   resetValidation,
-} from "../scripts/validation.js";
+} from "../../scripts/validation.js";
+import Api from "../scripts/Api.js";
 
 const initialCards = [
   {
@@ -36,6 +38,16 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
 ];
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "703c1021-5311-4b4b-88cc-d36592b73458",
+    "Content-Type": "application/json",
+  },
+});
+api.getInitialCards().then((cards) => {
+  console.log(cards);
+});
 
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
