@@ -76,7 +76,6 @@ class Api {
       }
       Promise.reject(`Error: ${res.status}`);
     });
-    // TODO- implement Post/cards
   }
 
   deleteCard(id) {

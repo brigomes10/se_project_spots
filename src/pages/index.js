@@ -142,12 +142,9 @@ function getCardElement(data) {
   const cardDeleteBtn = cardElement.querySelector(".card__delete-btn");
   const cardCaptionEl = previewModal.querySelector("modal_caption");
 
-  // if the card is liked, set the active class on the card
-
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
   cardTitleEl.textContent = data.name;
-  // cardCaptionEl.textContent = data.name;
 
   cardLikeBtn.addEventListener("click", (evt) => handleLike(evt, data._id));
   cardDeleteBtn.addEventListener("click", () => {
@@ -168,7 +165,6 @@ function handleEscapeKey(event) {
   }
 }
 
-// TODO- Finish avatar submission handler
 function handleAvatarSubmit(event) {
   event.preventDefault();
   console.log(avatarInput.value);
@@ -177,7 +173,6 @@ function handleAvatarSubmit(event) {
     .then((data) => {})
     .catch(console.error);
   console.log(data.avatar);
-  // TODO- Make this work(set src of avatar image)
 }
 
 function handleDeleteSubmit(evt) {
@@ -255,7 +250,6 @@ editProfileForm.addEventListener("submit", function (evt) {
       about: editProfileDescriptionInput.value,
     })
     .then((data) => {
-      // TODO- Use data argument instead of the input values
       profileNameEl.textContent = editProfileNameInput.value;
       profileDescriptionEl.textContent = editProfileDescriptionInput.value;
 
@@ -315,13 +309,11 @@ previewModal.addEventListener("click", (evt) => {
 
 addCardFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  // resetValidation(addCardFormElement, [nameInput, linkInput], settings);
+
   const inputValues = {
     name: nameInput.value,
     link: linkInput.value,
   };
-  // create card
-  // How do we create the card using the API?
 
   addCardFormElement.reset();
 
@@ -329,8 +321,6 @@ addCardFormElement.addEventListener("submit", function (evt) {
   cardsList.prepend(cardElement);
 
   closeModal(newPostModal);
-  // resetValidation(addCardFormElement);
-  // disableSubmitBtn(newPostSubmitBtn);
   console.log(inputValues);
   console.log(cardElement);
 });
