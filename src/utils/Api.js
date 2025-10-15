@@ -47,19 +47,19 @@ class Api {
     });
   }
 
-  CreateCards({ name, link }) {
-    return fetch(`${this._baseUrl}/v1/cards`, {
+  createCard({ name, link }) {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
         name,
         link,
-      }).then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        Promise.reject(`Error: ${res.status}`);
       }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      Promise.reject(`Error: ${res.status}`);
     });
   }
 

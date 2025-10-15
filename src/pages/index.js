@@ -96,8 +96,7 @@ const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
 const deleteModalCloseButton = deleteModal.querySelector(".modal__close");
 const deleteModalCTA = document.querySelector(".modal__button");
-
-const isLiked = document.querySelector(".card__like-btn");
+const modalCancelBtn = deleteModal.querySelector(".modal__button-two");
 
 // const selectedCardId = document.querySelector(".modal__button-two");
 
@@ -106,15 +105,15 @@ let selectedCard, selectedCardId;
 avatarFormElement.addEventListener("submit", handleAvatarSubmit);
 
 function handleLike(evt, id) {
-  const isLiked = document.getElementById(".card__like-btn");
-  if (evt.classList.contains("liked")) {
-    button.textContent = "Liked";
+  console.log(evt);
+  if (evt.target.classList.contains("card__like-btn_active")) {
+    evt.target.classList.toggle("card__like-btn_active");
   } else {
-    button.textContent = "Like";
+    evt.target.classList.toggle("card__like-btn_active");
   }
-  button.classList.toggle("liked");
-
-  document.getElementById("likeButton").addEventListener("click", toggleLike);
+  api.changeLikeStatus().then(([is, isLiked]) => {
+    console.log(is);
+  });
   // 1. Check whether card is liked or not
   // const isLiked = ???;
   // call the changeLikeStatus method, passing it the appropriate arguments
@@ -162,6 +161,7 @@ function handleEscapeKey(event) {
     closeModal(newPostModal);
     closeModal(editProfileModal);
     closeModal(previewModal);
+    closeModal(avatarModal);
   }
 }
 
@@ -172,14 +172,13 @@ function handleAvatarSubmit(event) {
     .editAvatarInfo(avatarInput.value)
     .then((data) => {})
     .catch(console.error);
-  console.log(data.avatar);
 }
 
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
   api
     .deleteCard(selectedCardId)
-    .then(() => {
+    .then((data) => {
       selectedCard.remove();
       closeModal();
     })
@@ -317,12 +316,12 @@ addCardFormElement.addEventListener("submit", function (evt) {
 
   addCardFormElement.reset();
 
-  const cardElement = getCardElement(inputValues);
-  cardsList.prepend(cardElement);
+  api.createCard(inputValues).then((res) => {
+    const cardElement = getCardElement(res);
+    cardsList.prepend(cardElement);
+  });
 
   closeModal(newPostModal);
-  console.log(inputValues);
-  console.log(cardElement);
 });
 
 enableValidation(settings);
@@ -330,6 +329,13 @@ enableValidation(settings);
 deleteModalCTA.addEventListener("click", () => {
   api.deleteCard(selectedCardId).then((res) => {
     selectedCard.remove();
-    console.log(res);
   });
+
+  closeModal(deleteModal);
+});
+
+modalCancelBtn.addEventListener("click", (evt) => {
+  if (evt.target.classlist.contains("modal_is-opened")) {
+    closeModal(deleteModal);
+  }
 });
