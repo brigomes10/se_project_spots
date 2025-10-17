@@ -52,16 +52,18 @@ api.getInitialCards().then((cards) => {
 });
 
 api.getAppInfo().then(([cards, userInfo]) => {
-  console.log(cards);
   cards.forEach((item) => {
     const cardEl = getCardElement(item);
     cardsList.append(cardEl);
   });
 
-  console.log(userInfo);
+  profileNameEl.textContent = userInfo.name;
+  profileDescriptionEl.textContent = userInfo.about;
+  profileAvatar.src = userInfo.avatar;
 });
 
 // Profile elements
+const profileAvatar = document.querySelector(".profile__avatar");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
@@ -170,7 +172,10 @@ function handleAvatarSubmit(event) {
   console.log(avatarInput.value);
   api
     .editAvatarInfo(avatarInput.value)
-    .then((data) => {})
+    .then((data) => {
+      // data.avatar
+      // here Brian does not care about data
+    })
     .catch(console.error);
 }
 
@@ -249,8 +254,8 @@ editProfileForm.addEventListener("submit", function (evt) {
       about: editProfileDescriptionInput.value,
     })
     .then((data) => {
-      profileNameEl.textContent = editProfileNameInput.value;
-      profileDescriptionEl.textContent = editProfileDescriptionInput.value;
+      profileNameEl.textContent = data.name;
+      profileDescriptionEl.textContent = data.about;
 
       const form = editProfileModal.querySelector("form");
       form.reset();
