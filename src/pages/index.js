@@ -52,14 +52,15 @@ api.getInitialCards().then((cards) => {
 });
 
 api.getAppInfo().then(([cards, userInfo]) => {
-  cards.forEach((item) => {
+  cards?.forEach((item) => {
     const cardEl = getCardElement(item);
     cardsList.append(cardEl);
   });
 
-  profileNameEl.textContent = userInfo.name;
-  profileDescriptionEl.textContent = userInfo.about;
-  profileAvatar.src = userInfo.avatar;
+  profileNameEl.textContent = userInfo?.name;
+  profileDescriptionEl.textContent = userInfo?.about;
+  profileAvatar.src = userInfo?.avatar;
+  console.log("here: ", userInfo);
 });
 
 // Profile elements
@@ -107,15 +108,14 @@ let selectedCard, selectedCardId;
 avatarFormElement.addEventListener("submit", handleAvatarSubmit);
 
 function handleLike(evt, id) {
-  console.log(evt);
+  let isLiked = true;
   if (evt.target.classList.contains("card__like-btn_active")) {
     evt.target.classList.toggle("card__like-btn_active");
   } else {
+    isLiked = false;
     evt.target.classList.toggle("card__like-btn_active");
   }
-  api.changeLikeStatus().then(([is, isLiked]) => {
-    console.log(is);
-  });
+  api.changeLikeStatus(id, isLiked).then((res) => {});
   // 1. Check whether card is liked or not
   // const isLiked = ???;
   // call the changeLikeStatus method, passing it the appropriate arguments
