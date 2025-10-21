@@ -73,6 +73,10 @@ class Api {
     }
     return Promise.reject(`Error: ${res.status}`);
   }
+
+  _request(url, options) {
+    return this._request(url, options).then(this._checkResponse);
+  }
 }
 
 export default Api;

@@ -60,7 +60,6 @@ api.getAppInfo().then(([cards, userInfo]) => {
   profileNameEl.textContent = userInfo?.name;
   profileDescriptionEl.textContent = userInfo?.about;
   profileAvatar.src = userInfo?.avatar;
-  console.log("here: ", userInfo);
 });
 
 // Profile elements
@@ -116,11 +115,6 @@ function handleLike(evt, id) {
     evt.target.classList.toggle("card__like-btn_active");
   }
   api.changeLikeStatus(id, isLiked).then((res) => {});
-  // 1. Check whether card is liked or not
-  // const isLiked = ???;
-  // call the changeLikeStatus method, passing it the appropriate arguments
-  // handle the response (.then and .catch )
-  // in the .then, toggle active class
 }
 
 function handleImageClick(data) {
@@ -143,6 +137,10 @@ function getCardElement(data) {
   const cardDeleteBtn = cardElement.querySelector(".card__delete-btn");
   const cardCaptionEl = previewModal.querySelector("modal_caption");
 
+  if (data.isLiked) {
+    cardLikeBtn.classList.add("card__like-btn_active");
+  }
+
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
   cardTitleEl.textContent = data.name;
@@ -164,6 +162,7 @@ function handleEscapeKey(event) {
     closeModal(editProfileModal);
     closeModal(previewModal);
     closeModal(avatarModal);
+    closeModal(deleteModal);
   }
 }
 
@@ -244,7 +243,9 @@ avatarModal.addEventListener("click", function (event) {
 
 editProfileForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
-
+  console.log(evt.target);
+  // submitButton.textContent = "Saving...";
+  console.log("Saving...");
   const submitButton = evt.submitter;
   setButtonText(submitButton, true);
 
@@ -321,9 +322,13 @@ addCardFormElement.addEventListener("submit", function (evt) {
 
   addCardFormElement.reset();
 
+  const a = "Saving";
+
   api.createCard(inputValues).then((res) => {
     const cardElement = getCardElement(res);
     cardsList.prepend(cardElement);
+
+    a = "Save";
   });
 
   closeModal(newPostModal);
@@ -340,7 +345,5 @@ deleteModalCTA.addEventListener("click", () => {
 });
 
 modalCancelBtn.addEventListener("click", (evt) => {
-  if (evt.target.classlist.contains("modal_is-opened")) {
-    closeModal(deleteModal);
-  }
+  closeModal(deleteModal);
 });
