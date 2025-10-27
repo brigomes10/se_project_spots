@@ -171,10 +171,7 @@ function handleAvatarSubmit(event) {
   console.log(avatarInput.value);
   api
     .editAvatarInfo(avatarInput.value)
-    .then((data) => {
-      // data.avatar
-      // here Brian does not care about data
-    })
+    .then((data) => {})
     .catch(console.error);
 }
 
@@ -314,6 +311,11 @@ previewModal.addEventListener("click", (evt) => {
 
 addCardFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
+  console.log(evt.target);
+  // submitButton.textContent = "Saving...";
+  console.log("Saving...");
+  const submitButton = evt.submitter;
+  setButtonText(submitButton, true);
 
   const inputValues = {
     name: nameInput.value,
@@ -322,18 +324,32 @@ addCardFormElement.addEventListener("submit", function (evt) {
 
   addCardFormElement.reset();
 
-  const a = "Saving";
+  submitButton.textContent = "Saving...";
 
-  api.createCard(inputValues).then((res) => {
-    const cardElement = getCardElement(res);
-    cardsList.prepend(cardElement);
+  api
+    .createCard(inputValues)
+    .then((res) => {
+      const cardElement = getCardElement(res);
+      cardsList.prepend(cardElement);
+    })
+    .then((data) => {
+      profileNameEl.textContent = data.name;
+      profileDescriptionEl.textContent = data.about;
 
-    a = "Save";
-  });
+      const form = editProfileModal.querySelector("form");
+      form.reset();
+      resetValidation(form);
 
-  closeModal(newPostModal);
+      closeModal(editProfileModal);
+    })
+    .catch(console.error)
+    .finally(() => {
+      submitButton.textContent = "Save";
+    });
+  console.log("submitting new Post Modal");
 });
 
+closeModal(newPostModal);
 enableValidation(settings);
 
 deleteModalCTA.addEventListener("click", () => {
