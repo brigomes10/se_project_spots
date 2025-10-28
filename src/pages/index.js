@@ -47,10 +47,6 @@ const api = new Api({
   },
 });
 
-api.getInitialCards().then((cards) => {
-  console.log(cards);
-});
-
 api.getAppInfo().then(([cards, userInfo]) => {
   cards?.forEach((item) => {
     const cardEl = getCardElement(item);
@@ -171,8 +167,11 @@ function handleAvatarSubmit(event) {
   console.log(avatarInput.value);
   api
     .editAvatarInfo(avatarInput.value)
-    .then((data) => {})
+    .then((data) => {
+      document.querySelector(".profile__avatar").src = data.avatar;
+    })
     .catch(console.error);
+  closeModal(avatarModal);
 }
 
 function handleDeleteSubmit(evt) {
@@ -273,6 +272,12 @@ editProfileModal.addEventListener("click", (evt) => {
   }
 });
 
+avatarModal.addEventListener("click", (evt) => {
+  if (evt.target.classList.contains("modal_is-opened")) {
+    closeModal(avatarModal);
+  }
+});
+
 // New Post
 const newPostBtn = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#new-post-modal");
@@ -298,6 +303,8 @@ newPostBtn.addEventListener("click", () => {
 newPostCloseBtn.addEventListener("click", function () {
   closeModal(newPostModal);
 });
+
+avatarModal.addEventListener("click", () => {});
 
 avatarCloseBtn.addEventListener("click", (evt) => {
   closeModal(avatarModal);
@@ -331,10 +338,6 @@ addCardFormElement.addEventListener("submit", function (evt) {
     .then((res) => {
       const cardElement = getCardElement(res);
       cardsList.prepend(cardElement);
-    })
-    .then((data) => {
-      profileNameEl.textContent = data.name;
-      profileDescriptionEl.textContent = data.about;
 
       const form = editProfileModal.querySelector("form");
       form.reset();
@@ -346,10 +349,9 @@ addCardFormElement.addEventListener("submit", function (evt) {
     .finally(() => {
       submitButton.textContent = "Save";
     });
-  console.log("submitting new Post Modal");
+  closeModal(newPostModal);
 });
 
-closeModal(newPostModal);
 enableValidation(settings);
 
 deleteModalCTA.addEventListener("click", () => {
