@@ -47,7 +47,7 @@ const toggleButtonState = (inputList, buttonElement, config) => {
   }
 };
 
-const disableSubmitBtn = (buttonElement, config) => {
+export const disableSubmitBtn = (buttonElement, config) => {
   buttonElement.classList.add(config.inactiveButtonClass);
   buttonElement.disabled = true;
 };
