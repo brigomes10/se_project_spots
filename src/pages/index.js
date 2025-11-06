@@ -233,8 +233,7 @@ editProfileForm.addEventListener("submit", function (evt) {
       profileNameEl.textContent = data.name;
       profileDescriptionEl.textContent = data.about;
 
-      const form = editProfileModal.querySelector("form");
-      form.reset();
+      editProfileForm.reset();
 
       closeModal(editProfileModal);
     })
@@ -320,15 +319,17 @@ enableValidation(settings);
 
 deleteModalCTA.addEventListener("click", (evt) => {
   closeModal(avatarModal);
-  deleteModalCTA.textContent = "Deleting...";
+  setButtonText(deleteModalCTA, true, "Delete", "Deleting...");
   api
     .deleteCard(selectedCardId)
     .then(() => {
       selectedCard.remove();
-      deleteModalCTA.textContent = "Delete";
       closeModal(deleteModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(deleteModalCTA, false, "Delete", "Deleting...");
+    });
 });
 
 modalCancelBtn.addEventListener("click", (evt) => {
